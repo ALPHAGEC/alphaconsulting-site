@@ -115,28 +115,32 @@
       max-width: 1100px;
       margin: auto;
     }
-    .accordion {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
     }
-    .accordion-item {
-      background: #f5f5f5;
+    .service {
+      background-color: #f5f5f5;
+      padding: 20px;
       border-radius: 12px;
-      overflow: hidden;
-    }
-    .accordion-header {
-      padding: 20px;
-      font-weight: bold;
       cursor: pointer;
-      background-color: #e2e2e2;
+      position: relative;
+      transition: background-color 0.3s ease;
     }
-    .accordion-content {
+    .service-detail {
       display: none;
-      padding: 20px;
-      background-color: #fff;
+      margin-top: 15px;
+      background: #fff;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
     }
-    .accordion-item.active .accordion-content {
+    .service.active {
+      background-color: #e0e0e0;
+    }
+    .service.active .service-detail {
       display: block;
     }
     .values {
@@ -234,22 +238,22 @@
 
   <section id="services">
     <h2>Service</h2>
-    <div class="accordion">
-      <div class="accordion-item">
-        <div class="accordion-header">ZEB Consulting</div>
-        <div class="accordion-content">We provide Zero Energy Building (ZEB) consulting including simulation, design review, and certification strategies.</div>
+    <div class="services">
+      <div class="service" onclick="showServiceDetail(0)">
+        <strong>ZEB Consulting</strong>
+        <div class="service-detail">We provide Zero Energy Building (ZEB) consulting including simulation, design review, and certification strategies.</div>
       </div>
-      <div class="accordion-item">
-        <div class="accordion-header">Energy Saving Plans</div>
-        <div class="accordion-content">Strategic planning and documentation for reducing energy usage in public and private construction projects.</div>
+      <div class="service" onclick="showServiceDetail(1)">
+        <strong>Energy Saving Plans</strong>
+        <div class="service-detail">Strategic planning and documentation for reducing energy usage in public and private construction projects.</div>
       </div>
-      <div class="accordion-item">
-        <div class="accordion-header">Barrier-Free Certification</div>
-        <div class="accordion-content">Consulting on accessibility design and certification for barrier-free buildings, supporting inclusiveness.</div>
+      <div class="service" onclick="showServiceDetail(2)">
+        <strong>Barrier-Free Certification</strong>
+        <div class="service-detail">Consulting on accessibility design and certification for barrier-free buildings, supporting inclusiveness.</div>
       </div>
-      <div class="accordion-item">
-        <div class="accordion-header">Renewable Energy / BIPV Plans</div>
-        <div class="accordion-content">Assessment and integration of solar, BIPV, and other renewable technologies in construction planning.</div>
+      <div class="service" onclick="showServiceDetail(3)">
+        <strong>Renewable Energy / BIPV Plans</strong>
+        <div class="service-detail">Assessment and integration of solar, BIPV, and other renewable technologies in construction planning.</div>
       </div>
     </div>
   </section>
@@ -285,14 +289,16 @@
       }, 500);
     }, 3000);
 
-    // Accordion functionality
-    const headers = document.querySelectorAll(".accordion-header");
-    headers.forEach(header => {
-      header.addEventListener("click", () => {
-        document.querySelectorAll(".accordion-item").forEach(item => item.classList.remove("active"));
-        header.parentElement.classList.add("active");
+    function showServiceDetail(index) {
+      const services = document.querySelectorAll('.service');
+      services.forEach((el, i) => {
+        if (i === index) {
+          el.classList.toggle('active');
+        } else {
+          el.classList.remove('active');
+        }
       });
-    });
+    }
   </script>
 </body>
 </html>
