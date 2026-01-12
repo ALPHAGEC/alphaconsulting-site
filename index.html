@@ -127,21 +127,23 @@
       cursor: pointer;
       position: relative;
       transition: background-color 0.3s ease;
-    }
-    .service-detail {
-      display: none;
-      margin-top: 15px;
-      background: #fff;
-      padding: 10px;
-      border-radius: 10px;
-      font-size: 0.95rem;
-      box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
+      text-align: center;
     }
     .service.active {
       background-color: #e0e0e0;
     }
-    .service.active .service-detail {
-      display: block;
+    .service-display {
+      margin-top: 30px;
+      padding: 20px;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .service-display p {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.6;
     }
     .values {
       display: flex;
@@ -239,22 +241,13 @@
   <section id="services">
     <h2>Service</h2>
     <div class="services">
-      <div class="service" onclick="showServiceDetail(0)">
-        <strong>ZEB Consulting</strong>
-        <div class="service-detail">We provide Zero Energy Building (ZEB) consulting including simulation, design review, and certification strategies.</div>
-      </div>
-      <div class="service" onclick="showServiceDetail(1)">
-        <strong>Energy Saving Plans</strong>
-        <div class="service-detail">Strategic planning and documentation for reducing energy usage in public and private construction projects.</div>
-      </div>
-      <div class="service" onclick="showServiceDetail(2)">
-        <strong>Barrier-Free Certification</strong>
-        <div class="service-detail">Consulting on accessibility design and certification for barrier-free buildings, supporting inclusiveness.</div>
-      </div>
-      <div class="service" onclick="showServiceDetail(3)">
-        <strong>Renewable Energy / BIPV Plans</strong>
-        <div class="service-detail">Assessment and integration of solar, BIPV, and other renewable technologies in construction planning.</div>
-      </div>
+      <div class="service" onclick="showServiceDetail(0)"><strong>ZEB Consulting</strong></div>
+      <div class="service" onclick="showServiceDetail(1)"><strong>Energy Saving Plans</strong></div>
+      <div class="service" onclick="showServiceDetail(2)"><strong>Barrier-Free Certification</strong></div>
+      <div class="service" onclick="showServiceDetail(3)"><strong>Renewable Energy / BIPV Plans</strong></div>
+    </div>
+    <div class="service-display" id="service-display">
+      <p id="service-text">Click a service to view details.</p>
     </div>
   </section>
 
@@ -289,13 +282,22 @@
       }, 500);
     }, 3000);
 
+    const serviceDescriptions = [
+      "We provide Zero Energy Building (ZEB) consulting including simulation, design review, and certification strategies.",
+      "Strategic planning and documentation for reducing energy usage in public and private construction projects.",
+      "Consulting on accessibility design and certification for barrier-free buildings, supporting inclusiveness.",
+      "Assessment and integration of solar, BIPV, and other renewable technologies in construction planning."
+    ];
+
     function showServiceDetail(index) {
-      const services = document.querySelectorAll('.service');
-      services.forEach((el, i) => {
+      document.getElementById('service-text').textContent = serviceDescriptions[index];
+
+      const cards = document.querySelectorAll('.service');
+      cards.forEach((card, i) => {
         if (i === index) {
-          el.classList.toggle('active');
+          card.classList.add('active');
         } else {
-          el.classList.remove('active');
+          card.classList.remove('active');
         }
       });
     }
