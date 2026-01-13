@@ -238,69 +238,78 @@
     </div>
   </section>
 
-  <section id="services">
-    <h2>Service</h2>
-    <div class="services">
-      <div class="service" onclick="showServiceDetail(0)"><strong>ZEB Consulting</strong></div>
-      <div class="service" onclick="showServiceDetail(1)"><strong>Energy Saving Plans</strong></div>
-      <div class="service" onclick="showServiceDetail(2)"><strong>Barrier-Free Certification</strong></div>
-      <div class="service" onclick="showServiceDetail(3)"><strong>Renewable Energy / BIPV Plans</strong></div>
-    </div>
-    <div class="service-display" id="service-display">
-      <p id="service-text">Click a service to view details.</p>
-    </div>
-  </section>
+ <section id="services">
+  <h2>Service</h2>
+  <div class="services">
+    <div class="service" onclick="showServiceDetail(0)"><img src="images/zeb.png" alt="ZEB"></div>
+    <div class="service" onclick="showServiceDetail(1)"><img src="images/gseed.png" alt="G-SEED"></div>
+    <div class="service" onclick="showServiceDetail(2)"><img src="images/bf.png" alt="Barrier Free"></div>
+    <div class="service" onclick="showServiceDetail(3)"><img src="images/ibs.png" alt="IBS"></div>
+  </div>
+  <div class="service-display" id="service-display">
+    <p id="service-text">Click a service to view details.</p>
+  </div>
+</section>
 
-  <section id="projects">
-    <h2>Works</h2>
-    <div class="projects">
-      <div class="project">ZEB Certification for Public Buildings</div>
-      <div class="project">BF Certification for Private Office Towers</div>
-      <div class="project">Energy Simulation for Complex Facilities</div>
-    </div>
-  </section>
+<style>
+  .services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  .service {
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s ease;
+    text-align: center;
+  }
+  .service img {
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+    border-radius: 10px;
+  }
+  .service.active {
+    background-color: #e0e0e0;
+  }
+  .service-display {
+    margin-top: 30px;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  .service-display p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+</style>
 
-  <section id="contact" class="cta">
-    <h2>Let's Work Together</h2>
-    <p><a href="#">Contact via KakaoTalk</a> or <a href="#">Email Us</a></p>
-  </section>
+<script>
+  const serviceDescriptions = [
+    "We provide Zero Energy Building (ZEB) consulting including simulation, design review, and certification strategies.",
+    "Strategic planning and documentation for reducing energy usage and green building certification (G-SEED).",
+    "Consulting on accessibility design and certification for barrier-free buildings, supporting inclusiveness.",
+    "Assessment and integration of solar, BIPV, and other renewable technologies in construction planning."
+  ];
 
-  <script>
-    const heroImg = document.getElementById("hero-img");
-    const images = [
-      "images/wallpaper1.jpg",
-      "images/wallpaper2.jpg",
-      "images/wallpaper3.jpg"
-    ];
-    let index = 0;
-    setInterval(() => {
-      index = (index + 1) % images.length;
-      heroImg.style.opacity = 0;
-      setTimeout(() => {
-        heroImg.src = images[index];
-        heroImg.style.opacity = 1;
-      }, 500);
-    }, 3000);
+  function showServiceDetail(index) {
+    document.getElementById('service-text').textContent = serviceDescriptions[index];
 
-    const serviceDescriptions = [
-      "We provide Zero Energy Building (ZEB) consulting including simulation, design review, and certification strategies.",
-      "Strategic planning and documentation for reducing energy usage in public and private construction projects.",
-      "Consulting on accessibility design and certification for barrier-free buildings, supporting inclusiveness.",
-      "Assessment and integration of solar, BIPV, and other renewable technologies in construction planning."
-    ];
-
-    function showServiceDetail(index) {
-      document.getElementById('service-text').textContent = serviceDescriptions[index];
-
-      const cards = document.querySelectorAll('.service');
-      cards.forEach((card, i) => {
-        if (i === index) {
-          card.classList.add('active');
-        } else {
-          card.classList.remove('active');
-        }
-      });
-    }
-  </script>
+    const cards = document.querySelectorAll('.service');
+    cards.forEach((card, i) => {
+      if (i === index) {
+        card.classList.add('active');
+      } else {
+        card.classList.remove('active');
+      }
+    });
+  }
+</script>
 </body>
 </html>
