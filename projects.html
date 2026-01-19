@@ -1,1 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 20px;
+      justify-items: center;
+    }
+    .gallery-item {
+      text-align: center;
+    }
+    .gallery-item img {
+      width: 250px;
+      height: 200px;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .gallery-item p {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #333;
+    }
+    .load-more {
+      display: block;
+      margin: 40px auto;
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Project Gallery</h1>
+  <div class="gallery" id="gallery">
+    <!-- Initial 21 images -->
+    <!-- Placeholder images, update src as needed -->
+    <!-- Example: images/projects/project001.jpg -->
+    <!-- Repeat 21 times -->
+    <!-- We'll use JS to generate these below -->
+  </div>
 
+  <button class="load-more" onclick="loadMoreImages()">+ 더보기</button>
+
+  <script>
+    let imageCount = 0;
+    const gallery = document.getElementById('gallery');
+
+    function loadMoreImages(count = 21) {
+      for (let i = 0; i < count; i++) {
+        imageCount++;
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        item.innerHTML = `
+          <img src="images/projects/project${String(imageCount).padStart(3, '0')}.jpg" alt="Project ${imageCount}">
+          <p>sample images</p>
+        `;
+        gallery.appendChild(item);
+      }
+    }
+
+    // Load first 21 on page load
+    loadMoreImages();
+  </script>
+</body>
+</html>
