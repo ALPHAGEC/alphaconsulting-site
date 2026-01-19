@@ -69,7 +69,7 @@
     }
     .hero {
       text-align: center;
-      padding: 120px 20px 60px;
+      padding: 120px 20px 40px;
       background: linear-gradient(to right, #a8edea, #fed6e3);
     }
     .hero h1 {
@@ -80,14 +80,33 @@
       font-size: 1.2rem;
       margin-bottom: 30px;
     }
-    .hero button {
-      background: #00AEEF;
-      color: white;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 25px;
+    .search-area {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+    .search-area input {
+      width: 300px;
+      padding: 10px 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
       font-size: 1rem;
+    }
+    .search-area button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background-color: #00AEEF;
+      color: white;
+      border: none;
+      border-radius: 8px;
       cursor: pointer;
+    }
+    .search-results {
+      text-align: center;
+      color: #666;
+      font-size: 1rem;
+      margin-bottom: 60px;
     }
     .features {
       display: grid;
@@ -135,7 +154,13 @@
   <section class="hero">
     <h1>ALPHI: 친환경 건축을 위한 AI 비서</h1>
     <p>인증, 법규, 기술자료까지 — ALPHI가 지식의 숲을 안내합니다.</p>
-    <button onclick="alert('기능은 준비 중입니다.')">질문하러 가기</button>
+    <div class="search-area">
+      <input type="text" placeholder="검색어를 입력하세요…" id="searchInput">
+      <button onclick="search()">검색</button>
+    </div>
+    <div class="search-results" id="results">
+      🔍 검색 기능은 곧 제공될 예정입니다.
+    </div>
   </section>
 
   <section class="features">
@@ -159,5 +184,13 @@
   <div class="footer">
     ALPHI © 2024 Alpha Consulting. 서비스는 베타 준비 중입니다.
   </div>
+
+  <script>
+    function search() {
+      const input = document.getElementById('searchInput').value;
+      const resultDiv = document.getElementById('results');
+      resultDiv.innerHTML = `🔍 "${input}"에 대한 검색 결과는 곧 제공될 예정입니다.`;
+    }
+  </script>
 </body>
 </html>
