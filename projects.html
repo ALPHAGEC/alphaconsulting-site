@@ -52,21 +52,20 @@
 <body>
   <h1>Project Gallery</h1>
   <div class="gallery" id="gallery">
-    <!-- Initial 21 images -->
-    <!-- Placeholder images, update src as needed -->
-    <!-- Example: images/projects/project001.jpg -->
-    <!-- Repeat 21 times -->
-    <!-- We'll use JS to generate these below -->
+    <!-- 이미지 자동 추가 -->
   </div>
 
   <button class="load-more" onclick="loadMoreImages()">+ 더보기</button>
 
   <script>
     let imageCount = 0;
+    const totalImages = 60; // 총 이미지 수
+    const imagesPerLoad = 21; // 한 번에 로드할 이미지 수
     const gallery = document.getElementById('gallery');
 
-    function loadMoreImages(count = 21) {
-      for (let i = 0; i < count; i++) {
+    function loadMoreImages() {
+      const maxLoad = Math.min(imagesPerLoad, totalImages - imageCount);
+      for (let i = 0; i < maxLoad; i++) {
         imageCount++;
         const item = document.createElement('div');
         item.className = 'gallery-item';
@@ -76,9 +75,12 @@
         `;
         gallery.appendChild(item);
       }
+      if (imageCount >= totalImages) {
+        document.querySelector('.load-more').style.display = 'none';
+      }
     }
 
-    // Load first 21 on page load
+    // 페이지 로드시 초기 로드
     loadMoreImages();
   </script>
 </body>
