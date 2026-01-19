@@ -73,27 +73,35 @@
     .main-content {
       flex: 1;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+    .search-description {
+      font-size: 2rem;
+      color: #444;
+      margin-bottom: 30px;
     }
     .search-area {
       display: flex;
-      gap: 12px;
+      gap: 16px;
     }
     .search-area input {
-      width: 300px;
-      padding: 10px 16px;
+      width: 450px;
+      padding: 15px 20px;
       border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
+      border-radius: 10px;
+      font-size: 1.5rem;
     }
     .search-area button {
-      padding: 10px 20px;
-      font-size: 1rem;
+      padding: 15px 30px;
+      font-size: 1.5rem;
       background-color: #00AEEF;
       color: white;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       cursor: pointer;
     }
     .footer {
@@ -125,8 +133,9 @@
   </nav>
 
   <div class="main-content">
-    <div style="text-align: center; margin-bottom: 20px; font-size: 1.2rem; color: #444;">
-      친환경 컨설팅 AI, <strong>ALPHI</strong>입니다. 무엇이든 물어보세요.<br>EX) 제로에너지빌딩 인증
+    <div class="search-description">
+      친환경 컨설팅 AI, <strong>ALPHI</strong>입니다. 무엇이든 물어보세요.<br>
+      EX) 제로에너지빌딩 인증
     </div>
     <div class="search-area">
       <input type="text" placeholder="검색어를 입력하세요…" id="searchInput">
