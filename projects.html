@@ -5,52 +5,71 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project Gallery</title>
   <style>
-    body {
-      font-family: 'Noto Sans KR', sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #fff;
+    * {
+      scroll-behavior: smooth;
+      box-sizing: border-box;
     }
-    header {
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffffff;
+      color: #333;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 60px;
-      background-color: #fff;
-      border-bottom: 1px solid #eee;
-      position: sticky;
-      top: 0;
+      padding: 10px 20px;
       z-index: 1000;
+      flex-wrap: wrap;
     }
-    header img {
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    .nav-left img {
       height: 40px;
     }
-    nav {
+    .nav-center {
+      flex-grow: 1;
       display: flex;
-      gap: 40px;
+      justify-content: center;
+    }
+    .nav-right {
+      display: flex;
+      justify-content: flex-end;
       align-items: center;
+    }
+    nav ul {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
     }
     nav a {
       text-decoration: none;
-      color: #000;
+      color: #333;
       font-weight: 500;
-      font-size: 15px;
+      padding: 8px 12px;
     }
-    .login {
-      padding: 6px 16px;
-      border: 1px solid #000;
-      border-radius: 30px;
-      font-size: 13px;
-      font-weight: 500;
-      transition: background-color 0.3s;
-    }
-    .login:hover {
-      background-color: #000;
-      color: #fff;
+    .login-btn {
+      padding: 8px 16px;
+      background-color: #00AEEF;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
     }
     h1 {
       text-align: center;
-      margin: 60px 0 40px;
+      margin: 100px 0 40px;
       font-size: 28px;
     }
     .gallery {
@@ -91,16 +110,22 @@
   </style>
 </head>
 <body>
-  <header>
-    <a href="index.html"><img src="images/logo.png" alt="Logo"></a>
-    <nav>
-      <a href="index.html#about">ABOUT</a>
-      <a href="index.html#service">SERVICE</a>
-      <a href="index.html#projects">WORKS</a>
-      <a href="index.html#contact">CONTACT</a>
-      <a class="login" href="#">LOG IN</a>
-    </nav>
-  </header>
+  <nav>
+    <div class="nav-left">
+      <a href="index.html"><img src="images/logo.png" alt="Alpha Consulting Logo"></a>
+    </div>
+    <div class="nav-center">
+      <ul>
+        <li><a href="index.html#about">ABOUT</a></li>
+        <li><a href="index.html#services">SERVICE</a></li>
+        <li><a href="index.html#projects">WORKS</a></li>
+        <li><a href="index.html#contact">CONTACT</a></li>
+      </ul>
+    </div>
+    <div class="nav-right">
+      <button class="login-btn">LOG IN</button>
+    </div>
+  </nav>
 
   <h1>Project Gallery</h1>
   <div class="gallery" id="gallery"></div>
