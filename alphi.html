@@ -12,8 +12,11 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: #f9f9f9;
+      background: linear-gradient(to right, #a8edea, #fed6e3);
       color: #333;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
     nav {
       position: fixed;
@@ -67,24 +70,15 @@
       border-radius: 20px;
       cursor: pointer;
     }
-    .hero {
-      text-align: center;
-      padding: 120px 20px 40px;
-      background: linear-gradient(to right, #a8edea, #fed6e3);
-    }
-    .hero h1 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
+    .main-content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     .search-area {
       display: flex;
-      justify-content: center;
       gap: 12px;
-      margin-bottom: 40px;
     }
     .search-area input {
       width: 300px;
@@ -102,33 +96,12 @@
       border-radius: 8px;
       cursor: pointer;
     }
-    .search-results {
-      text-align: center;
-      color: #666;
-      font-size: 1rem;
-      margin-bottom: 60px;
-    }
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 40px;
-      padding: 60px 40px;
-      max-width: 1200px;
-      margin: auto;
-      background: white;
-    }
-    .feature {
-      text-align: center;
-      padding: 20px;
-    }
-    .feature h3 {
-      margin-top: 16px;
-    }
     .footer {
       text-align: center;
-      padding: 40px;
+      padding: 20px;
       font-size: 0.9rem;
-      color: #999;
+      color: #666;
+      background: transparent;
     }
   </style>
 </head>
@@ -151,35 +124,12 @@
     </div>
   </nav>
 
-  <section class="hero">
-    <h1>ALPHI: 친환경 건축을 위한 AI 비서</h1>
-    <p>인증, 법규, 기술자료까지 — ALPHI가 지식의 숲을 안내합니다.</p>
+  <div class="main-content">
     <div class="search-area">
       <input type="text" placeholder="검색어를 입력하세요…" id="searchInput">
       <button onclick="search()">검색</button>
     </div>
-    <div class="search-results" id="results">
-      🔍 검색 기능은 곧 제공될 예정입니다.
-    </div>
-  </section>
-
-  <section class="features">
-    <div class="feature">
-      <img src="images/icon-search.png" alt="Search Icon" height="80">
-      <h3>키워드 검색</h3>
-      <p>문서 내 핵심 키워드를 빠르게 검색할 수 있습니다.</p>
-    </div>
-    <div class="feature">
-      <img src="images/icon-ai.png" alt="AI Icon" height="80">
-      <h3>AI 질의응답</h3>
-      <p>문서 기반 질문에 대해 AI가 요점만 콕 집어 답합니다.</p>
-    </div>
-    <div class="feature">
-      <img src="images/icon-doc.png" alt="Doc Icon" height="80">
-      <h3>다양한 문서 지원</h3>
-      <p>PDF, 인증서, 보고서 등 다양한 형식을 분석합니다.</p>
-    </div>
-  </section>
+  </div>
 
   <div class="footer">
     ALPHI © 2024 Alpha Consulting. 서비스는 베타 준비 중입니다.
@@ -188,8 +138,7 @@
   <script>
     function search() {
       const input = document.getElementById('searchInput').value;
-      const resultDiv = document.getElementById('results');
-      resultDiv.innerHTML = `🔍 "${input}"에 대한 검색 결과는 곧 제공될 예정입니다.`;
+      alert(`"${input}" 검색 기능은 곧 제공될 예정입니다.`);
     }
   </script>
 </body>
