@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALPHI - Green AI Assistant</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9f9;
+      color: #333;
+    }
+    nav {
+      background: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 40px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav img {
+      height: 40px;
+    }
+    nav ul {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+    .hero {
+      text-align: center;
+      padding: 100px 20px 60px;
+      background: linear-gradient(to right, #a8edea, #fed6e3);
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    .hero button {
+      background: #00AEEF;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      padding: 60px 40px;
+      max-width: 1200px;
+      margin: auto;
+      background: white;
+    }
+    .feature {
+      text-align: center;
+      padding: 20px;
+    }
+    .feature h3 {
+      margin-top: 16px;
+    }
+    .footer {
+      text-align: center;
+      padding: 40px;
+      font-size: 0.9rem;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html"><img src="images/logo.png" alt="Logo"></a>
+    <ul>
+      <li><a href="index.html#about">ABOUT</a></li>
+      <li><a href="index.html#services">SERVICE</a></li>
+      <li><a href="index.html#projects">WORKS</a></li>
+      <li><a href="index.html#contact">CONTACT</a></li>
+      <li><a href="alphi.html">ALPHI</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <h1>ALPHI: 친환경 건축을 위한 AI 비서</h1>
+    <p>인증, 법규, 기술자료까지 — ALPHI가 지식의 숲을 안내합니다.</p>
+    <button onclick="alert('기능은 준비 중입니다.')">질문하러 가기</button>
+  </section>
+
+  <section class="features">
+    <div class="feature">
+      <img src="images/icon-search.png" alt="Search Icon" height="80">
+      <h3>키워드 검색</h3>
+      <p>문서 내 핵심 키워드를 빠르게 검색할 수 있습니다.</p>
+    </div>
+    <div class="feature">
+      <img src="images/icon-ai.png" alt="AI Icon" height="80">
+      <h3>AI 질의응답</h3>
+      <p>문서 기반 질문에 대해 AI가 요점만 콕 집어 답합니다.</p>
+    </div>
+    <div class="feature">
+      <img src="images/icon-doc.png" alt="Doc Icon" height="80">
+      <h3>다양한 문서 지원</h3>
+      <p>PDF, 인증서, 보고서 등 다양한 형식을 분석합니다.</p>
+    </div>
+  </section>
+
+  <div class="footer">
+    ALPHI © 2024 Alpha Consulting. 서비스는 베타 준비 중입니다.
+  </div>
+</body>
+</html>
