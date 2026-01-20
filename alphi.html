@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ALPHI - Green AI Assistant</title>
   <style>
-    * {
-      scroll-behavior: smooth;
-      box-sizing: border-box;
-    }
+    * { scroll-behavior: smooth; box-sizing: border-box; }
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -31,24 +28,10 @@
       z-index: 1000;
       flex-wrap: wrap;
     }
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 40px;
-    }
-    .nav-left img {
-      height: 40px;
-    }
-    .nav-center {
-      flex-grow: 1;
-      display: flex;
-      justify-content: center;
-    }
-    .nav-right {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-    }
+    .nav-left { display: flex; align-items: center; gap: 40px; }
+    .nav-left img { height: 40px; }
+    .nav-center { flex-grow: 1; display: flex; justify-content: center; }
+    .nav-right { display: flex; justify-content: flex-end; align-items: center; }
     nav ul {
       display: flex;
       gap: 20px;
@@ -165,45 +148,40 @@
   </div>
 
   <script>
-  async function search() {
-    const input = document.getElementById('searchInput').value.trim().toLowerCase();
-    const resultsDiv = document.getElementById('results');
-    resultsDiv.innerHTML = '';
+    async function search() {
+      const input = document.getElementById('searchInput').value.trim().toLowerCase();
+      const resultsDiv = document.getElementById('results');
+      resultsDiv.innerHTML = '';
 
-    if (!input) {
-      resultsDiv.innerHTML = '<p>검색어를 입력해주세요.</p>';
-      return;
-    }
-
-    try {
-      const response = await fetch('data/alphi_data.json');
-      const data = await response.json();
-
-      // 공백 기준 단어 분리
-      const keywords = input.split(/\s+/);
-
-      // 단어 중 하나라도 포함되면 결과로 채택
-      const filtered = data.filter(item => {
-        const text = (item.title + ' ' + item.content).toLowerCase();
-        return keywords.some(word => text.includes(word));
-      });
-
-      if (filtered.length === 0) {
-        resultsDiv.innerHTML = '<p>검색 결과가 없습니다.</p>';
+      if (!input) {
+        resultsDiv.innerHTML = '<p>검색어를 입력해주세요.</p>';
         return;
       }
 
-      filtered.forEach(item => {
-        const resultEl = document.createElement('div');
-        resultEl.className = 'result';
-        resultEl.innerHTML = `<h3>${item.title}</h3><p>${item.content}</p>`;
-        resultsDiv.appendChild(resultEl);
-      });
-    } catch (err) {
-      resultsDiv.innerHTML = '<p>데이터를 불러오지 못했습니다.</p>';
-    }
-  }
-</script>
+      try {
+        const response = await fetch('data/alphi_data.json');
+        const data = await response.json();
 
+        const filtered = data.filter(item => {
+          const text = (item.title + ' ' + item.content).toLowerCase();
+          return text.includes(input);
+        });
+
+        if (filtered.length === 0) {
+          resultsDiv.innerHTML = '<p>검색 결과가 없습니다.</p>';
+          return;
+        }
+
+        filtered.forEach(item => {
+          const resultEl = document.createElement('div');
+          resultEl.className = 'result';
+          resultEl.innerHTML = `<h3>${item.title}</h3><p>${item.content}</p>`;
+          resultsDiv.appendChild(resultEl);
+        });
+      } catch (err) {
+        resultsDiv.innerHTML = '<p>데이터를 불러오지 못했습니다.</p>';
+      }
+    }
+  </script>
 </body>
 </html>
