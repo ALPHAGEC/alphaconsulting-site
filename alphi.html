@@ -167,9 +167,12 @@
   <script>
     async function search() {
       const input = document.getElementById('searchInput').value.trim();
-      const resultsDiv = document.getElementById('results');
-      resultsDiv.innerHTML = '';
-
+      const keywords = input.toLowerCase().split(/\s+/);
+      const filtered = data.filter(item => {
+        const text = (item.title + ' ' + item.content).toLowerCase();
+        return keywords.every(word => text.includes(word));
+        });
+        
       if (!input) {
         resultsDiv.innerHTML = '<p>검색어를 입력해주세요.</p>';
         return;
