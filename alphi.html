@@ -104,6 +104,22 @@
       border-radius: 10px;
       cursor: pointer;
     }
+    .results {
+      margin-top: 40px;
+      max-width: 700px;
+      text-align: left;
+    }
+    .result {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .result h3 {
+      margin-top: 0;
+      color: #00AEEF;
+    }
     .footer {
       text-align: center;
       padding: 20px;
@@ -141,6 +157,7 @@
       <input type="text" placeholder="검색어를 입력하세요…" id="searchInput">
       <button onclick="search()">검색</button>
     </div>
+    <div class="results" id="results"></div>
   </div>
 
   <div class="footer">
@@ -148,9 +165,38 @@
   </div>
 
   <script>
-    function search() {
-      const input = document.getElementById('searchInput').value;
-      alert(`"${input}" 검색 기능은 곧 제공될 예정입니다.`);
+    async function search() {
+      const input = document.getElementById('searchInput').value.trim();
+      const resultsDiv = document.getElementById('results');
+      resultsDiv.innerHTML = '';
+
+      if (!input) {
+        resultsDiv.innerHTML = '<p>검색어를 입력해주세요.</p>';
+        return;
+      }
+
+      try {
+        const response = await fetch('data/alphi_data.json');
+        const data = await response.json();
+
+        const filtered = data.filter(item =>
+          item.title.includes(input) || item.content.includes(input)
+        );
+
+        if (filtered.length === 0) {
+          resultsDiv.innerHTML = '<p>검색 결과가 없습니다.</p>';
+          return;
+        }
+
+        filtered.forEach(item => {
+          const resultEl = document.createElement('div');
+          resultEl.className = 'result';
+          resultEl.innerHTML = `<h3>${item.title}</h3><p>${item.content}</p>`;
+          resultsDiv.appendChild(resultEl);
+        });
+      } catch (err) {
+        resultsDiv.innerHTML = '<p>데이터를 불러오지 못했습니다.</p>';
+      }
     }
   </script>
 </body>
