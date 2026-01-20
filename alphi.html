@@ -179,10 +179,11 @@
         const response = await fetch('data/alphi_data.json');
         const data = await response.json();
 
-        const filtered = data.filter(item =>
-          item.title.includes(input) || item.content.includes(input)
-        );
-
+        const keywords = input.toLowerCase().split(/\s+/);
+        const filtered = data.filter(item => {
+          const text = (item.title + ' ' + item.content).toLowerCase();
+          return keywords.every(word => text.includes(word));
+        });
         if (filtered.length === 0) {
           resultsDiv.innerHTML = '<p>검색 결과가 없습니다.</p>';
           return;
